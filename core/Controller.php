@@ -19,14 +19,6 @@ class Controller
         $this->setResponse($response);
         $this->config = Config::instance();
     }
-    /**
-     * You can overwrite this function to run code before
-     * any action is called.
-     *
-     * @return void
-     */
-    public function initController()
-    { }
 
     protected function render($template, $data = [], $status = 200)
     {

@@ -5,6 +5,7 @@ vendor
 tmp/logs/*
 tmp/cache/*
 
+assets/
 .vagrant/
 
 !empty

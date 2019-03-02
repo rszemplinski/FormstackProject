@@ -70,7 +70,6 @@ class Router
         $response = new Response();
         $request->setAction($action);
         $instance = new $controller($request, $response);
-        $instance->initController();
         return call_user_func([$instance, $action], $vars);
     }
 

@@ -9,6 +9,8 @@ define('DS', DIRECTORY_SEPARATOR);
 if (!defined('PROJECT_ROOT')) {
     define('PROJECT_ROOT', __DIR__ . DS);
 }
+define('ASSETS_ROOT', PROJECT_ROOT . 'assets' . DS);
+define('IMAGES_ROOT', ASSETS_ROOT . 'images' . DS);
 define('APP_ROOT', PROJECT_ROOT . 'app' . DS);
 define('CORE_ROOT', PROJECT_ROOT . 'core' . DS);
 
