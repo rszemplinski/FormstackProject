@@ -1,0 +1,17 @@
+{
+    "app": {
+        "id": "my-app",
+        "name": "My Application",
+        "environment": "development",
+        "debug": true
+    },
+    "mysql": {
+        "host": "testbox.dev",
+        "database": "my_app",
+        "username": "my_app",
+        "password": "secret",
+        "port": "3306",
+        "charset": "utf8",
+        "collation": "utf8_unicode_ci"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "require": {
+        "hassankhan/config": "^2.0",
+        "illuminate/database": "5.5.44",
+        "illuminate/events": "5.5.44",
+        "robmorgan/phinx": "^0.10.6",
+        "nikic/fast-route": "^1.3",
+        "zendframework/zend-diactoros": "^1.8",
+        "siriusphp/middleware": "^1.1",
+        "philo/laravel-blade": "^3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "JustTheBasicz\\": "./core/",
+            "App\\Controller\\": "./app/controller/",
+            "App\\Model\\": "./app/models/"
+        }
+    }
+}

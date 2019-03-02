@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+node_modules
+vendor
+tmp/logs/*
+tmp/cache/*
+
+.vagrant/
+
+!empty
