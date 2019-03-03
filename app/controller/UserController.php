@@ -28,17 +28,7 @@ class UserController extends Controller
     {
         try {
             $user = new User;
-            $user->first_name = $this->data['first_name'];
-            $user->last_name = $this->data['last_name'];
-
-            $email = $this->data['email'];
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return $this->renderJSON(array("error" => "Invalid email."), 400);
-            }
-            $user->email = $email;
-
-            $user->password = $this->data['password']; //Obviously this should be encrypted
-            $user->save();
+            $this->setUserValues($user);
             return $this->renderJSON($user);
         } catch (QueryException $e) {
             $message = $e->errorInfo;
@@ -53,25 +43,30 @@ class UserController extends Controller
             if (!$user) {
                 return $this->renderJSON(array("error" => "User not found."), 400);
             }
-            $user->first_name = $this->data['first_name'];
-            $user->last_name = $this->data['last_name'];
-
-            $email = $this->data['email'];
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return $this->renderJSON(array("error" => "Invalid email."), 400);
-            }
-            $user->email = $email;
-
-            $user->password = $this->data['password'];
-            $user->save();
+            $this->setUserValues($user);
             return $this->renderJSON($user);
         } catch (QueryException $e) {
             $message = $e->errorInfo;
-            return $this->renderJSON(array("error" => "Unable to create user.", "message" => $message[2]), 400);
+            return $this->renderJSON(array("error" => "Unable to update user.", "message" => $message[2]), 400);
         }
     }
 
-    public function upload($userId)
+    private function setUserValues(User $user)
+    {
+        $user->first_name = $this->data['first_name'];
+        $user->last_name = $this->data['last_name'];
+
+        $email = $this->data['email'];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->renderJSON(array("error" => "Invalid email."), 400);
+        }
+        $user->email = $email;
+
+        $user->password = $this->data['password'];
+        $user->save();
+    }
+
+    public function uploadAvatar($userId)
     {
         $user = User::where('id', $userId)->first();
         if (!$user) {
