@@ -2,6 +2,10 @@
 
 namespace JustTheBasicz;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\RequestInterface;
+
+
 class Controller
 {
 
@@ -13,7 +17,7 @@ class Controller
 
     protected $data = null;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(RequestInterface $request, ResponseInterface $response)
     {
         $this->setRequest($request);
         $this->setResponse($response);
@@ -60,11 +64,6 @@ class Controller
         return $this->render($template, compact('error', 'subject'), $status);
     }
 
-    public function __get($name)
-    {
-        return null;
-    }
-
     public function getRequest()
     {
         return $this->request;
@@ -75,7 +74,7 @@ class Controller
         return $this->response;
     }
 
-    public function setRequest(Request $request)
+    public function setRequest(RequestInterface $request)
     {
         $this->request = $request;
         $parsedBody = $this->request->getParsedBody();
@@ -89,7 +88,7 @@ class Controller
         return $this;
     }
 
-    public function setResponse(Response $response)
+    public function setResponse(ResponseInterface $response)
     {
         $this->response = $response;
         return $this;

@@ -37,7 +37,7 @@ class UserController extends Controller
             }
             $user->email = $email;
 
-            $user->password = $this->data['password'];
+            $user->password = $this->data['password']; //Obviously this should be encrypted
             $user->save();
             return $this->renderJSON($user);
         } catch (QueryException $e) {
