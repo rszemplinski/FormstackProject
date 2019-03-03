@@ -33,6 +33,8 @@ class UserController extends Controller
         } catch (QueryException $e) {
             $message = $e->errorInfo;
             return $this->renderJSON(array("error" => "Unable to create user.", "message" => $message[2]), 400);
+        } catch (Exception $e) {
+            return $this->renderJSON(array("error" => "Unable to update user.", "message" => $e->getMessage()), 400);
         }
     }
 
@@ -48,6 +50,8 @@ class UserController extends Controller
         } catch (QueryException $e) {
             $message = $e->errorInfo;
             return $this->renderJSON(array("error" => "Unable to update user.", "message" => $message[2]), 400);
+        } catch (Exception $e) {
+            return $this->renderJSON(array("error" => "Unable to update user.", "message" => $e->getMessage()), 400);
         }
     }
 
@@ -58,7 +62,7 @@ class UserController extends Controller
 
         $email = $this->data['email'];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->renderJSON(array("error" => "Invalid email."), 400);
+            throw new Exception("Invalid email.");
         }
         $user->email = $email;
 
